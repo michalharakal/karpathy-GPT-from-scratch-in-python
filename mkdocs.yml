@@ -1,0 +1,10 @@
+site_name: GPT from scratch
+
+nav:
+    - Home: index.md
+    - Analysis: analysis.md
+    - Summary: summary.md
+    - Links: sources.md
+
+theme:
+  name: material
