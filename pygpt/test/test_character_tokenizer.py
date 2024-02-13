@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from pygpt.embeding.character_tokenizer import CharTokenizer
+from pygpt.tokens.character_tokenizer import CharTokenizer
 from pygpt.test.test_text_loader import INPUT_TXT_SAMPLE
 
 

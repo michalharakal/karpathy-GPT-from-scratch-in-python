@@ -1,6 +1,6 @@
 from typing import List
 
-from pygpt.embeding.tokenizer import TextTokenizer
+from pygpt.tokens.tokenizer import TextTokenizer
 
 
 class CharTokenizer(TextTokenizer):
