@@ -30,13 +30,13 @@ jobs:
       - name: Install Antora
         run: |
           npm i antora
-          yarn global add --ignore-optional --silent asciidoctor-kroki && \
-          yarn global add --ignore-optional --silent asciidoctor-plantuml && \
-          yarn global add --ignore-optional --silent asciidoctor-external-callout && \
-          yarn global add --ignore-optional --silent @asciidoctor/tabs && \
-          yarn global add --ignore-optional --silent @antora/collector-extension && \
-          yarn global add --ignore-optional --silent yaml && \
-          yarn global add --ignore-optional --silent @antora/lunr-extension
+          npm i asciidoctor-kroki && \
+          npm i asciidoctor-plantuml && \
+          npm i asciidoctor-external-callout && \
+          npm i @asciidoctor/tabs && \
+          npm i @antora/collector-extension && \
+          npm i yaml && \
+          npm i @antora/lunr-extension
       - name: Generate Site
         run: |
           cd docs
