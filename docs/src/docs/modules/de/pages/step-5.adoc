@@ -1,0 +1,27 @@
+= Step 5. Train & Test Spilt
+
+* 90% der Daten sind zum Trainieren
+* 10% der Daten sind zum Validieren
+* die Daten als Liste mit Integers ist ins 2 Tensoren umgewandelt.
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=33..39]
+----
+
+[plantuml]
+----
+@startuml
+left to right direction
+skinparam nodesep 5
+
+node "IntArray" as input
+node "Train" as train
+node "Validate" as val
+node "Train/Test Split" as as
+
+input ~~> as : Vector
+as  ~~> train : tensor
+as  ~~> val : tensor
+----
+

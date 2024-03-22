@@ -1,0 +1,9 @@
+= Step 4. Encoder & Decoder
+
+Tokenizers
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=25..32]
+----
+

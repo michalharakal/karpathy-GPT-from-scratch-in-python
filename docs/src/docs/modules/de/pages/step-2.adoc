@@ -1,4 +1,4 @@
-= Initialisierung-Block
+= Step 2. Initialisierung-Block
 
 Definition der Hyperparametern und eine initialisierung von der Random funktion, sodass man immer die vergleichbaren Ergebnisse bekommt.
 
