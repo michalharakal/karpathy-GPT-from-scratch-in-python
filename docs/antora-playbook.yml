@@ -38,6 +38,9 @@ asciidoc:
     hide-uri-scheme: '@'
     kroki-server-url: https://kroki.vshn.net/
     kroki-fetch-diagram: ''
+    plantuml-server-url: 'https://www.plantuml.com/plantuml'
+
+
   extensions:
     - asciidoctor-kroki
     - asciidoctor-plantuml
