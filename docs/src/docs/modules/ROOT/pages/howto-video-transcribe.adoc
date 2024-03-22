@@ -1,0 +1,13 @@
+= Video lecture transcription
+
+Based on https://karpathy.ai/lexicap/[Lexicap: Lex Fridman Podcast Whisper captions]
+
+== Workflow
+
+[source,bash]
+----
+$ yt-dlp -x --audio-format mp3 -o nanogpt-lecture.mp3 -- kCc8FmEb1nY  <1>
+$
+----
+
+1. download video from youtube with https://github.com/yt-dlp/yt-dlp[yt-dlp]
