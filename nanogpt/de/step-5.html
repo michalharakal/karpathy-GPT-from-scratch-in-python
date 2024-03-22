@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Schritt nach Schritt :: nanoGPT by Andrej Karpathy explained</title>
-    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-by-step.py.html">
+    <title>Step 5. Train &amp; Test Spilt :: nanoGPT by Andrej Karpathy explained</title>
+    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-5.html">
+    <link rel="prev" href="step-4.html">
     <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -89,7 +90,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-4.html">Step 4. Encoder &amp; Decoder</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="step-5.html">Step 5. Train &amp; Test Spilt</a>
   </li>
 </ul>
@@ -123,42 +124,59 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">nanoGPT Explained</a></li>
-    <li><a href="step-by-step.py.html">Schritt nach Schritt</a></li>
+    <li>Schritt nach Schritt</li>
+    <li><a href="step-5.html">Step 5. Train &amp; Test Spilt</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/step-by-step.py.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/step-5.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Schritt nach Schritt</h1>
-<div class="paragraph">
-<p>Das ist eine kommentierte Version der Implementierung in Python.</p>
-</div>
+<h1 class="page">Step 5. Train &amp; Test Spilt</h1>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="step-1.html" class="xref page">Step 1. Imports-Block</a></p>
+<p>90% der Daten sind zum Trainieren</p>
 </li>
 <li>
-<p><a href="step-2.html" class="xref page">Step 2. Initialisierung-Block</a></p>
+<p>10% der Daten sind zum Validieren</p>
 </li>
 <li>
-<p><a href="step-3.html" class="xref page">Step 3. Daten laden</a></p>
-</li>
-<li>
-<p><a href="step-4.html" class="xref page">Step 4. Encoder &amp; Decoder</a></p>
-</li>
-<li>
-<p><a href="step-5.html" class="xref page">Step 5. Train &amp; Test Spilt</a></p>
+<p>die Daten als Liste mit Integers ist ins 2 Tensoren umgewandelt.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>TBD &#8230;&#8203;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># Train and test splits
+data = torch.tensor(encode(text), dtype=torch.long)
+n = int(0.9*len(data)) # first 90% will be train, rest val
+train_data = data[:n]
+val_data = data[n:]</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@startuml
+left to right direction
+skinparam nodesep 5
+
+node "IntArray" as input
+node "Train" as train
+node "Validate" as val
+node "Train/Test Split" as as
+
+input ~~&gt; as : Vector
+as  ~~&gt; train : tensor
+as  ~~&gt; val : tensor</pre>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="step-4.html">Step 4. Encoder &amp; Decoder</a></span>
+</nav>
 </article>
   </div>
 </main>
