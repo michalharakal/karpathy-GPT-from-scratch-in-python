@@ -1,15 +1,15 @@
 site:
   title: KPTChat
-  url: https://michalharakal.github.io/KPTChat
+  url: https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python
   start_page: nangpt::index.adoc
   keys:
     google_analytics: ''
 content:
   sources:
-  - url: ./                 # The current folder is a git repo
+  - url: ../                 # The current folder is a git repo
     branches: HEAD         # "HEAD" uses whichever branch is currently checked out
     start_path: docs/src/docs
-    edit_url: 'https://github.com/michalharakal/KPTChat/{path}'
+    edit_url: 'https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/{path}'
 ui:
   bundle:
     url: ./ui-bundle.zip
