@@ -1,3 +1,0 @@
-= nanoGTP
-
-antora-playbook.yml

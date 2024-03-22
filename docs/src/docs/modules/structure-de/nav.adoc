@@ -1,3 +1,0 @@
-.Building blocks
-
-* xref:index.adoc[]

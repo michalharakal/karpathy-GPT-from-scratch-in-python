@@ -1,7 +1,7 @@
 name: nanogpt
-title: KGPTChat
+title: nanoGPT Explained
 version: 
 start_page: ROOT:index.adoc
 nav:
 - modules/ROOT/nav.adoc
-- modules/nanogpt-lecture/nav.adoc
+- modules/de/nav.adoc
