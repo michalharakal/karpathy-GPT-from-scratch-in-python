@@ -1,7 +1,7 @@
 site:
   title: KPTChat
   url: https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python
-  start_page: nangpt::index.adoc
+  start_page: nanogpt:de:index.adoc
   keys:
     google_analytics: ''
 content:

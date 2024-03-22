@@ -1,7 +1,6 @@
 name: nanogpt
 title: nanoGPT Explained
 version: 
-start_page: ROOT:index.adoc
+start_page: de:index.adoc
 nav:
-- modules/ROOT/nav.adoc
 - modules/de/nav.adoc

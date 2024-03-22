@@ -2,10 +2,8 @@
 
 Das ist eine kommentierte Version der Implementierung in Python.
 
-Link zu der ursprünglichen Datei xref:example$gpt.py[gpt.py]
-
 == Imports-Block
-[source,python]
+[source,python,linenums]
 ----
 include::example$gpt.py[lines=1..3]
 ----
@@ -24,14 +22,14 @@ Hier wird auch schon versucht eine `device` zu setzen, zuerst mit HW Beschleunig
 
 NOTE: Die HW Unterstützung auf den Apple's Geräten mit Apple Silicon Chips ist vorhanden und muss noch untersucht werden.
 
-[source,python]
+[source,python,linenums]
 ----
 include::example$gpt.py[lines=5..19]
 ----
 
 == Daten laden
 
-[source,python]
+[source,python,linenums]
 ----
 include::example$gpt.py[lines=21..23]
 ----
