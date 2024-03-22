@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Schritt nach Schritt :: KPTChat</title>
+    <title>Schritt nach Schritt :: nanoGPT by Andrej Karpathy explained</title>
     <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-by-step.py.html">
     <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../_/css/site.css">
@@ -13,7 +13,7 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python">KPTChat</a>
+      <a class="navbar-item" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python">nanoGPT by Andrej Karpathy explained</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -73,6 +73,21 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Schritt nach Schritt</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="step-1.html">Imports-Block</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="step-2.html">Initialisierung-Block</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="step-3.html">Daten laden</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </nav>
 </div>
@@ -113,97 +128,24 @@
 </aside>
 <article class="doc">
 <h1 class="page">Schritt nach Schritt</h1>
-<div id="preamble">
-<div class="sectionbody">
 <div class="paragraph">
 <p>Das ist eine kommentierte Version der Implementierung in Python.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_imports_block"><a class="anchor" href="#_imports_block"></a>Imports-Block</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import torch
-import torch.nn as nn
-from torch.nn import functional as F</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><code>PyTorch</code>, eine ML Bibliothek ist benutzt:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Tensors und matematische Operationen</p>
+<p><a href="step-1.html" class="xref page">Imports-Block</a></p>
 </li>
 <li>
-<p>verdefinierte Klassen zum Aufbauen von tiefen Neuronalen Netzten(Blöcke, aktivierungs Funktion &#8230;&#8203;)</p>
+<p><a href="step-2.html" class="xref page">Initialisierung-Block</a></p>
 </li>
 <li>
-<p>Untestütz HW Beschleunigung</p>
+<p><a href="step-3.html" class="xref page">Daten laden</a></p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_initialisierung_block"><a class="anchor" href="#_initialisierung_block"></a>Initialisierung-Block</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Definition der Hyperparametern und eine initialisierung von der Random funktion, sodass man immer die vergleichbaren Ergebnisse bekommt.</p>
-</div>
-<div class="paragraph">
-<p>Hier wird auch schon versucht eine <code>device</code> zu setzen, zuerst mit HW Beschleunigung, wenn vorhanden, sonst mit <code>cpu</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Die HW Unterstützung auf den Apple&#8217;s Geräten mit Apple Silicon Chips ist vorhanden und muss noch untersucht werden.
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># hyperparameters
-batch_size = 64 # how many independent sequences will we process in parallel?
-block_size = 256 # what is the maximum context length for predictions?
-max_iters = 5000
-eval_interval = 500
-learning_rate = 3e-4
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-eval_iters = 200
-n_embd = 384
-n_head = 6
-n_layer = 6
-dropout = 0.2
-# ------------
-
-torch.manual_seed(1337)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_daten_laden"><a class="anchor" href="#_daten_laden"></a>Daten laden</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
-with open('input.txt', 'r', encoding='utf-8') as f:
-    text = f.read()</code></pre>
-</div>
-</div>
 <div class="paragraph">
 <p>TBD &#8230;&#8203;</p>
-</div>
-</div>
 </div>
 </article>
   </div>

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>NanoGTP erklärt :: nanoGPT by Andrej Karpathy explained</title>
-    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/index.html">
-    <link rel="next" href="step-1.html">
+    <title>Daten laden :: nanoGPT by Andrej Karpathy explained</title>
+    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-3.html">
+    <link rel="prev" href="step-2.html">
     <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -69,7 +69,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">NanoGPT erklärt</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="index.html">NanoGTP erklärt</a>
   </li>
 </ul>
@@ -84,7 +84,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-2.html">Initialisierung-Block</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="step-3.html">Daten laden</a>
   </li>
 </ul>
@@ -114,55 +114,31 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">nanoGPT Explained</a></li>
-    <li>NanoGPT erklärt</li>
-    <li><a href="index.html">NanoGTP erklärt</a></li>
+    <li>Schritt nach Schritt</li>
+    <li><a href="step-3.html">Daten laden</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/step-3.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">NanoGTP erklärt</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Schritt be Schritt</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_schritt_nach_schritt"><a class="anchor" href="#_schritt_nach_schritt"></a>Schritt nach Schritt</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Das ist eine kommentierte Version der Implementierung in Python.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="step-1.html" class="xref page">Imports-Block</a></p>
-</li>
-<li>
-<p><a href="step-2.html" class="xref page">Initialisierung-Block</a></p>
-</li>
-<li>
-<p><a href="step-3.html" class="xref page">Daten laden</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>TBD &#8230;&#8203;</p>
-</div>
+<h1 class="page">Daten laden</h1>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
+with open('input.txt', 'r', encoding='utf-8') as f:
+    text = f.read()</code></pre>
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="step-1.html">Imports-Block</a></span>
+  <span class="prev"><a href="step-2.html">Initialisierung-Block</a></span>
 </nav>
 </article>
   </div>
