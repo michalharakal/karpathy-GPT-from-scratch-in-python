@@ -1,5 +1,5 @@
 site:
-  title: KPTChat
+  title: nanoGPT by Andrej Karpathy explained
   url: https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python
   start_page: nanogpt:de:index.adoc
   keys:

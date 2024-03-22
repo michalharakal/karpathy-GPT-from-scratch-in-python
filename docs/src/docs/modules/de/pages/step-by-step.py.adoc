@@ -2,37 +2,11 @@
 
 Das ist eine kommentierte Version der Implementierung in Python.
 
-== Imports-Block
-[source,python,linenums]
-----
-include::example$gpt.py[lines=1..3]
-----
+* xref:step-1.adoc[]
+* xref:step-2.adoc[]
+* xref:step-3.adoc[]
 
-`PyTorch`, eine ML Bibliothek ist benutzt:
 
-*  Tensors und matematische Operationen
-* verdefinierte Klassen zum Aufbauen von tiefen Neuronalen Netzten(Blöcke, aktivierungs Funktion ...)
-* Untestütz HW Beschleunigung
-
-== Initialisierung-Block
-
-Definition der Hyperparametern und eine initialisierung von der Random funktion, sodass man immer die vergleichbaren Ergebnisse bekommt.
-
-Hier wird auch schon versucht eine `device` zu setzen, zuerst mit HW Beschleunigung, wenn vorhanden, sonst mit `cpu`
-
-NOTE: Die HW Unterstützung auf den Apple's Geräten mit Apple Silicon Chips ist vorhanden und muss noch untersucht werden.
-
-[source,python,linenums]
-----
-include::example$gpt.py[lines=5..19]
-----
-
-== Daten laden
-
-[source,python,linenums]
-----
-include::example$gpt.py[lines=21..23]
-----
 
 
 TBD ...

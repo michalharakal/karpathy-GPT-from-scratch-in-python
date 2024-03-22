@@ -1,0 +1,6 @@
+= Daten laden
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=21..23]
+----
