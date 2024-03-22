@@ -1,6 +1,3 @@
 .NanoGPT
 
 * xref:index.adoc[]
-* xref:analysis.adoc[]
-* xref:summary.adoc[]
-* xref:sources.adoc[]
