@@ -27,13 +27,24 @@ runtime:
 asciidoc:
   attributes:
     page-pagination: ''
-    hide-uri-scheme: ''
-    experimental: ''
     stem: ''
     icons: font
+    experimental: ''
+    idprefix: '@'
+    idseparator: '-@'
+    table-caption: false
+    example-caption: false
+    listing-caption: false
+    hide-uri-scheme: '@'
+    kroki-server-url: https://kroki.vshn.net/
+    kroki-fetch-diagram: ''
+  extensions:
+    - asciidoctor-kroki
+    - asciidoctor-plantuml
+
 output:
   destinations:
-  - provider: fs
-    path: ./_public
-    clean: true
+   - provider: fs
+     path: ./_public
+     clean: true
 

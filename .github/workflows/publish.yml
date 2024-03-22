@@ -28,7 +28,15 @@ jobs:
         with:
           node-version: '18'
       - name: Install Antora
-        run: npm i antora
+        run: |
+          npm i antora
+          yarn global add --ignore-optional --silent asciidoctor-kroki && \
+          yarn global add --ignore-optional --silent asciidoctor-plantuml && \
+          yarn global add --ignore-optional --silent asciidoctor-external-callout && \
+          yarn global add --ignore-optional --silent @asciidoctor/tabs && \
+          yarn global add --ignore-optional --silent @antora/collector-extension && \
+          yarn global add --ignore-optional --silent yaml && \
+          yarn global add --ignore-optional --silent @antora/lunr-extension
       - name: Generate Site
         run: |
           cd docs
