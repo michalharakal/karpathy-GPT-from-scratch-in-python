@@ -158,20 +158,9 @@ train_data = data[:n]
 val_data = data[n:]</code></pre>
 </div>
 </div>
-<div class="listingblock plantuml-error">
+<div class="imageblock plantuml">
 <div class="content">
-<pre>@startuml
-left to right direction
-skinparam nodesep 5
-
-node "IntArray" as input
-node "Train" as train
-node "Validate" as val
-node "Train/Test Split" as as
-
-input ~~&gt; as : Vector
-as  ~~&gt; train : tensor
-as  ~~&gt; val : tensor</pre>
+<img src="https://www.plantuml.com/plantuml/png/JOmn3i8m34NtdCBg1PXOEg0oCbDrjne35gaJsMubbfuTDQgWszDxNxypH_LvIg7xKQA7WsTGVhuS8YkDpbc2lLaAAauWEP9HWNC86q9p4x-gugS1D60fi--XLsIfrZVQxO298phLi60wZayzcSEz9FQQqKAeZx2kbqsqCD3eMGCQL5UVeGKdiODUCFrbHnBdANq1" alt="diagram">
 </div>
 </div>
 <nav class="pagination">
