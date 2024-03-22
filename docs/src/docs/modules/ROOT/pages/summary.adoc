@@ -1,9 +1,8 @@
-# Summary
+= Summary
 
-## Ideas, suggestion and exercises
+== Ideas, suggestion and exercises
 
-
-### Suggestions by Andrej
+=== Suggestions by Andrej
 
 Ideas and suggestion provided in the description of the video
 

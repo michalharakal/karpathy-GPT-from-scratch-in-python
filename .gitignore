@@ -1,0 +1,13 @@
+.env
+build
+_build
+.idea
+report/images
+pickles
+__pycache__
+.data_cache
+.ipynb_checkpoints
+docs_components
+_public
+.cache
+Pipfile.lock

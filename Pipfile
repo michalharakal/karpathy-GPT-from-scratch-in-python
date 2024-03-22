@@ -8,11 +8,12 @@ pip = "*"
 install = "*"
 mkdocs = "*"
 mkdocs-material = "*"
-
-
-[dev-packages]
-ipykernel = "*"
 jupyterlab = "*"
+numpy = "*"
+torch = "*"
+ipykernel = "*"
+jupyter = "*"
+
 
 [requires]
 python_version = "3.8"
