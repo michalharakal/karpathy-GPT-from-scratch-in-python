@@ -1,0 +1,47 @@
+= Step 5. Transformers - Head
+
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=63..91]
+----
+
+== B, T, C
+
+In dem Python-Code, stehen `B`, `T` und `C` für Dimensionen, die häufig im Kontext von Sequenzen und Batches in maschinellem Lernen verwendet werden, insbesondere in der natürlichen Sprachverarbeitung (NLP) und ähnlichen Bereichen. Hier ist, was sie bedeuten:
+
+- **`B`**: Batch-Größe. Die Anzahl der Datensätze, die in einem Durchgang des Vorwärts-/Rückwärtsdurchlaufs beim Training verarbeitet werden. Es ist üblich, Batches im Training für Effizienz und Generalisierung zu verwenden.
+- **`T`**: Sequenzlänge oder Zeitpunkte. Im Kontext von Sequenzen, wie Sätzen in Texten oder Zeitreihendaten, repräsentiert `T` die Länge der Sequenz. In der NLP könnte dies die Anzahl der Wörter oder Token im längsten Satz im Batch sein, wobei kürzere Sequenzen auf diese Länge aufgefüllt werden.
+- **`C`**: Anzahl der Kanäle oder Merkmale. In der NLP entspricht dies oft der Größe des Einbettungsvektors für jedes Token. Bei Bilddaten könnte `C` die Farbkanäle repräsentieren (z. B. 3 für RGB-Bilder).
+
+== Code Erklärung
+
+Dieser Code ist ein Teil einer Vorwärts-Pass-Methode (`forward`) eines selbst-aufmerksamkeitsbasierten Mechanismus, wie er in Transformer-Modellen verwendet wird. Hier ist eine detaillierte Erklärung:
+
+### Eingabe und Ausgabe
+
+- **Eingabe (`x`)**: Die Eingabe ist ein Tensor der Größe `(batch, time-step, channels)`, der eine Batch-Größe (`B`), eine Anzahl an Zeitpunkten oder Sequenzlängen (`T`) und eine Anzahl an Kanälen oder Merkmalen (`C`) hat.
+- **Ausgabe**: Die Ausgabe ist ein Tensor der Größe `(batch, time-step, head size)`, also ein Tensor mit denselben Dimensionen für Batch und Zeitpunkte, aber möglicherweise einer anderen Dimension für die Merkmale, hier bezeichnet als "head size" (`hs`).
+
+### Schlüssel-, Abfrage- und Wertfunktionen
+
+- **`self.key(x)`, `self.query(x)`, `self.value(x)`**: Diese Funktionen erzeugen jeweils Tensoren der Größe `(B,T,hs)` für Schlüssel (`k`), Abfragen (`q`) und Werte (`v`) basierend auf der Eingabe. Sie transformieren die Eingabedaten in verschiedene Darstellungen für den Aufmerksamkeitsmechanismus.
+
+### Berechnung der Aufmerksamkeitsscores
+
+1. **Affinitäten (`wei`)**: Der Abfrage-Tensor (`q`) wird mit der transponierten Version des Schlüssel-Tensors (`k`) multipliziert. Dies erfolgt mittels der Matrizenmultiplikation `@`, wobei `k.transpose(-2,-1)` die letzte und vorletzte Dimension von `k` vertauscht, um die Dimensionen für die Multiplikation passend zu machen. Dieser Schritt berechnet die Affinität oder "Aufmerksamkeitsscores" zwischen allen Paaren von Abfragen und Schlüsseln. Die Multiplikation mit `k.shape[-1]**-0.5` dient dazu, die Werte zu skalieren und zu stabilisieren (dies entspricht der Wurzel der Dimension der Schlüssel/Abfragen).
+
+2. **Maskierung**: Die Variable `self.tril` ist eine untere Dreiecksmatrix, die verwendet wird, um bestimmte Aufmerksamkeitsscores zu maskieren (zu "verstecken"), indem sie auf `-inf` gesetzt werden. Dies wird oft verwendet, um zu verhindern, dass die Vorhersage für einen Zeitpunkt Informationen von zukünftigen Zeitpunkten berücksichtigt, und implementiert damit eine kausale oder maskierte Aufmerksamkeit.
+
+3. **Softmax**: Die Anwendung der Softmax-Funktion auf die Aufmerksamkeitsscores (`wei`) entlang der letzten Dimension verwandelt sie in Wahrscheinlichkeiten, wobei die Softmax-Normalisierung sicherstellt, dass die Scores für jeden Zeitpunkt zu 1 summiert werden.
+
+4. **Dropout**: `self.dropout(wei)` wendet Dropout auf die normalisierten Aufmerksamkeitsscores an, um Überanpassung zu verhindern und die Generalisierungsfähigkeit des Modells zu verbessern.
+
+### Gewichtete Aggregation der Werte
+
+- Die normalisierten und eventuell maskierten Aufmerksamkeitsscores (`wei`) werden dann verwendet, um eine gewichtete Summe der Werte (`v`) zu berechnen. Die Matrizenmultiplikation `wei @ v` bewirkt, dass die "Aufmerksamkeit" oder das "Gewicht", das jedem Wert zugewiesen wird, basierend auf den Affinitäten zwischen den Abfragen und den Schlüsseln berechnet wird.
+
+### Rückgabe
+
+- Der resultierende Tensor `out` der Größe `(B, T, hs)` ist das Ergebnis des Aufmerksamkeitsmechanismus und gibt für jede Abfrage im Batch und zu jedem Zeitpunkt einen gewichteten aggregierten Wert basierend auf den berechneten Aufmerksamkeitsscores zurück.
+

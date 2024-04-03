@@ -1,6 +1,4 @@
-.NanoGPT erklärt
 
-* xref:index.adoc[]
 
 .Schritt nach Schritt
 * xref:step-1.adoc[]

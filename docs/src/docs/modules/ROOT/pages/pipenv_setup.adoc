@@ -3,7 +3,7 @@
 [source,bash]
 ----
 pipen --python 3.8 
-pipenv install -d ipykernel
+pipenv install -d ipykernel jupyterlab
 pipenv shell
 
 ----

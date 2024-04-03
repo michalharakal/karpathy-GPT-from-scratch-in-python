@@ -1,0 +1,37 @@
+= Step 5. get_batch()
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=40..48]
+----
+
+
+== Batch & Block explanation
+[source,python]
+----
+x = train_data[:block_size]
+y = train_data[1:block_size+1]
+for t in range(block_size):
+    context = x[:t+1]
+    target = y[t]
+    print(f"when input is {context} the target: {target}")
+----
+
+[source,text]
+----
+when input is tensor([18]) the target: 47
+when input is tensor([18, 47]) the target: 56
+when input is tensor([18, 47, 56]) the target: 57
+when input is tensor([18, 47, 56, 57]) the target: 58
+when input is tensor([18, 47, 56, 57, 58]) the target: 1
+when input is tensor([18, 47, 56, 57, 58,  1]) the target: 15
+when input is tensor([18, 47, 56, 57, 58,  1, 15]) the target: 47
+when input is tensor([18, 47, 56, 57, 58,  1, 15, 47]) the target: 58
+
+----
+
+== get batch Code
+[source,python,linenums]
+----
+include::example$gpt.py[lines=41..48]
+----
