@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Step 5. Train &amp; Test Spilt :: nanoGPT by Andrej Karpathy explained</title>
-    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-5.html">
-    <link rel="prev" href="step-4.html">
-    <link rel="next" href="step-6.html">
+    <title>Step 10. Transformers - Feedforward :: nanoGPT by Andrej Karpathy explained</title>
+    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-10.html">
+    <link rel="prev" href="step-9.html">
+    <link rel="next" href="step-11.html">
     <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -82,7 +82,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-4.html">Step 4. Tokenisierung</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-5.html">Step 5. Train &amp; Test Spilt</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -97,7 +97,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-9.html">Step 9. Transformers - MultiHeadAttention</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="step-10.html">Step 10. Transformers - Feedforward</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -144,47 +144,49 @@
   <ul>
     <li><a href="index.html">nanoGPT Explained</a></li>
     <li>Schritt nach Schritt</li>
-    <li><a href="step-5.html">Step 5. Train &amp; Test Spilt</a></li>
+    <li><a href="step-10.html">Step 10. Transformers - Feedforward</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/step-5.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/step-10.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Step 5. Train &amp; Test Spilt</h1>
-<div class="ulist">
-<ul>
-<li>
-<p>90% der Daten sind zum Trainieren</p>
-</li>
-<li>
-<p>10% der Daten sind zum Validieren</p>
-</li>
-<li>
-<p>die Daten als Liste mit Integers ist ins 2 Tensoren umgewandelt.</p>
-</li>
-</ul>
-</div>
+<h1 class="page">Step 10. Transformers - Feedforward</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># Train and test splits
-data = torch.tensor(encode(text), dtype=torch.long)
-n = int(0.9*len(data)) # first 90% will be train, rest val
-train_data = data[:n]
-val_data = data[n:]</code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">class FeedFoward(nn.Module):
+    """ a simple linear layer followed by a non-linearity """
+
+    def __init__(self, n_embd):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(n_embd, 4 * n_embd),
+            nn.ReLU(),
+            nn.Linear(4 * n_embd, n_embd),
+            nn.Dropout(dropout),
+        )</code></pre>
 </div>
 </div>
-<div class="imageblock plantuml">
+</div>
+</div>
+<div class="sect1">
+<h2 id="code-erklären"><a class="anchor" href="#code-erklären"></a>Code erklären</h2>
+<div class="sectionbody">
+<div class="literalblock">
 <div class="content">
-<img src="https://www.plantuml.com/plantuml/png/JOmn3i8m34NtdCBg1PXOEg0oCbDrjne35gaJsMubbfuTDQgWszDxNxypH_LvIg7xKQA7WsTGVhuS8YkDpbc2lLaAAauWEP9HWNC86q9p4x-gugS1D60fi--XLsIfrZVQxO298phLi60wZayzcSEz9FQQqKAeZx2kbqsqCD3eMGCQL5UVeGKdiODUCFrbHnBdANq1" alt="diagram">
+<pre>Code definiert eine Klasse FeedForward, die ein einfaches Feedforward-Netzwerk (auch bekannt als vollständig verbundenes Netzwerk) in PyTorch implementiert.</pre>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="step-4.html">Step 4. Tokenisierung</a></span>
-  <span class="next"><a href="step-6.html">Step 6. Batch &amp; Block</a></span>
+  <span class="prev"><a href="step-9.html">Step 9. Transformers - MultiHeadAttention</a></span>
+  <span class="next"><a href="step-11.html">Step 10. Transformers - Block</a></span>
 </nav>
 </article>
   </div>

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Step 5. Train &amp; Test Spilt :: nanoGPT by Andrej Karpathy explained</title>
-    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-5.html">
-    <link rel="prev" href="step-4.html">
-    <link rel="next" href="step-6.html">
+    <title>Step 10. Transformers - Block :: nanoGPT by Andrej Karpathy explained</title>
+    <link rel="canonical" href="https://michalharakal.github.io/karpathy-GPT-from-scratch-in-python/nanogpt/de/step-11.html">
+    <link rel="prev" href="step-10.html">
+    <link rel="next" href="#extra_save_params.adoc">
     <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -82,7 +82,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-4.html">Step 4. Tokenisierung</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-5.html">Step 5. Train &amp; Test Spilt</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -100,7 +100,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="step-10.html">Step 10. Transformers - Feedforward</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="step-11.html">Step 10. Transformers - Block</a>
   </li>
 </ul>
@@ -144,47 +144,57 @@
   <ul>
     <li><a href="index.html">nanoGPT Explained</a></li>
     <li>Schritt nach Schritt</li>
-    <li><a href="step-5.html">Step 5. Train &amp; Test Spilt</a></li>
+    <li><a href="step-11.html">Step 10. Transformers - Block</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/step-5.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/michalharakal/karpathy-GPT-from-scratch-in-python/docs/src/docs/modules/de/pages/step-11.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Step 5. Train &amp; Test Spilt</h1>
-<div class="ulist">
-<ul>
-<li>
-<p>90% der Daten sind zum Trainieren</p>
-</li>
-<li>
-<p>10% der Daten sind zum Validieren</p>
-</li>
-<li>
-<p>die Daten als Liste mit Integers ist ins 2 Tensoren umgewandelt.</p>
-</li>
-</ul>
-</div>
+<h1 class="page">Step 10. Transformers - Block</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># Train and test splits
-data = torch.tensor(encode(text), dtype=torch.long)
-n = int(0.9*len(data)) # first 90% will be train, rest val
-train_data = data[:n]
-val_data = data[n:]</code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">class Block(nn.Module):
+    """ Transformer block: communication followed by computation """
+
+    def __init__(self, n_embd, n_head):
+        # n_embd: embedding dimension, n_head: the number of heads we'd like
+        super().__init__()
+        head_size = n_embd // n_head
+        self.sa = MultiHeadAttention(n_head, head_size)
+        self.ffwd = FeedFoward(n_embd)
+        self.ln1 = nn.LayerNorm(n_embd)
+        self.ln2 = nn.LayerNorm(n_embd)
+
+    def forward(self, x):
+        x = x + self.sa(self.ln1(x))
+        x = x + self.ffwd(self.ln2(x))
+        return x</code></pre>
 </div>
 </div>
 <div class="imageblock plantuml">
 <div class="content">
-<img src="https://www.plantuml.com/plantuml/png/JOmn3i8m34NtdCBg1PXOEg0oCbDrjne35gaJsMubbfuTDQgWszDxNxypH_LvIg7xKQA7WsTGVhuS8YkDpbc2lLaAAauWEP9HWNC86q9p4x-gugS1D60fi--XLsIfrZVQxO298phLi60wZayzcSEz9FQQqKAeZx2kbqsqCD3eMGCQL5UVeGKdiODUCFrbHnBdANq1" alt="diagram">
+<img src="https://www.plantuml.com/plantuml/png/VOz1IyGm58JFpQzuzDGYOMckOjZ84YgqzUAXHVOGpLktRDeisGGHyRzBchLUn5juCvdvPdlnolam6RBPm9DJy-LWtOGExerzFH4zlZbrFWBY9ybwU3Rg1SrT_Z2VWuS-tvEiwQhrtAWFT9rr4nHDLvNv_fPaRIrMlGt6ZpKgBRp7sOzsXgAjHHbpn6xt6oIq7fDyKu8wU7JGrYBLiR_hs98YvQfAH2sjUrTEGo7bJmdxhqJAw1fMosFmSUWGhprG3arNfScKHw8qZtA8z5TBUYvpbWyiGLCEKYw0oSEkD9J3GBx85cST9lCD" alt="diagram">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="code-erklären"><a class="anchor" href="#code-erklären"></a>Code erklären</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Der Transformer-Block, wie er hier definiert ist, kombiniert wichtige Prinzipien wie Multi-Head Attention, Feedforward-Netzwerke und Residual Connections mit Layer-Normalisierung, um die Lernfähigkeit in tiefen Netzwerkarchitekturen zu verbessern. Diese Struktur unterstützt effektiv das Lernen komplexer Abhängigkeiten in den Daten und ist besonders nützlich bei der Verarbeitung von Sequenzen, wo langreichweitige Abhängigkeiten von Bedeutung sind.</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="step-4.html">Step 4. Tokenisierung</a></span>
-  <span class="next"><a href="step-6.html">Step 6. Batch &amp; Block</a></span>
+  <span class="prev"><a href="step-10.html">Step 10. Transformers - Feedforward</a></span>
+  <span class="next"><a href="#extra_save_params.adoc">extra_save_params.adoc</a></span>
 </nav>
 </article>
   </div>
