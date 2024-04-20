@@ -1,9 +1,18 @@
-= Step 4. Encoder & Decoder
-
-Tokenizers
+= Step 4. Tokenisierung
 
 [source,python,linenums]
 ----
 include::example$gpt.py[lines=25..32]
 ----
+
+Bei der Tokenisierung auf Buchstabenebene, die auch als Zeichen- oder Buchstabentokenisierung bekannt ist, wird der Text in seine grundlegenden Bestandteile, die einzelnen Buchstaben, zerlegt.
+Im Gegensatz zur Wort- oder Subwort-Tokenisierung, bei der Wörter oder Wortteile als Token dienen, wird hier jedes Zeichen des Textes (inklusive Leerzeichen und Satzzeichen) als eigenständiger Token behandelt.
+
+.Vorteile
+* kleines Wörterbuch (Anzahl von Buchstaben)
+* einfache Implementierung
+* Fähigkeit, mit Wörtern umzugehen, die dem Modell während des Trainings nicht begegnet sind, da es immer auf die Buchstabenebene zurückgreifen kann
+
+.Nachteile
+* Textsequenzen sind lang, da jede Buchstabe ein Index braucht
 

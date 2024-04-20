@@ -16,3 +16,12 @@ how many independent sequences will we process in parallel?
 [[block_size]]
 == Block size
 what is the maximum context length for predictions?
+
+
+[[head_size]]
+== head_size
+TDB
+
+[[num_heads]]
+== num_heads
+TBD

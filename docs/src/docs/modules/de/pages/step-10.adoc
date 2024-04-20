@@ -1,0 +1,11 @@
+= Step 10. Transformers - Feedforward
+
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=106..116]
+----
+
+== Code erklären
+
+ Code definiert eine Klasse FeedForward, die ein einfaches Feedforward-Netzwerk (auch bekannt als vollständig verbundenes Netzwerk) in PyTorch implementiert.

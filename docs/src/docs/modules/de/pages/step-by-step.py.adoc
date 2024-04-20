@@ -10,6 +10,8 @@ Das ist eine kommentierte Version der Implementierung in Python.
 * xref:step-6.adoc[]
 * xref:step-7.adoc[]
 * xref:step-8.adoc[]
+* xref:step-9.adoc[]
+* xref:step-10.adoc[]
 
 
 TBD ...

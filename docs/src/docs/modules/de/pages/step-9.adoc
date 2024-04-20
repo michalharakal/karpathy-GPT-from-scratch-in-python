@@ -1,0 +1,24 @@
+= Step 9. Transformers - MultiHeadAttention
+
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=92..104]
+----
+
+== Code erklären
+
+`MultiHeadAttention` als eine Pytorch `nn.Module` Klasse implementiert "Mutliheads" in self attention. Diese Klasse benutzt  keine globale Variable. Die Parameter xref:terms.adoc#num_heads[num_heads] und xref:terms.adoc#head_size[head_size] sind als construktor Parameter übergeben.
+
+Die "Multiheads" sind zwar als `nn.ModuleList` erzeugt, aber die heads werden in parallel, nicht sequenziel ausgeführt. Vorteil vom nutzen der `nn.ModuleList` Klasse ist, dass das Auswerten von `-parametes()` automatisch für die Element erfolgt.
+
+Die Inferenz ist aber in der `forward` Methode durch List Comprehension überschrieben und dadurch auch paralelsierbar.
+
+== Paralelle Ausführung
+
+
+Die Berechnung erfolgt in der Formulierung des Codes sequentiell für jeden Head, da die List Comprehension `[h(x) for h in self.heads]` durch die Heads iteriert und für jeden einzelnen das Ergebnis von h(x) berechnet, bevor zum nächsten übergegangen wird. Dies geschieht nacheinander für jeden Head in der Liste.
+
+Obwohl die Berechnung im Code sequentiell erscheint, ist es wichtig zu beachten, dass moderne Deep Learning Frameworks wie `PyTorch` intern stark optimiert sind, um Berechnungen zu parallelisieren, insbesondere auf GPUs. Das bedeutet, dass während der Code sequentiell aussieht, die tatsächliche Ausführung auf der Hardwareebene je nach Situation und Hardwarekonfiguration parallelisiert werden kann. PyTorch und ähnliche Frameworks nutzen die parallele Natur von GPUs, um viele Operationen gleichzeitig auszuführen, was besonders bei größeren Modellen und Datenmengen zu erheblichen Leistungssteigerungen führt.
+
+In der Praxis heißt das, dass selbst wenn der Code die Heads sequentiell abarbeitet, die eigentlichen Matrixoperationen innerhalb jedes Heads (z.B. Matrix-Multiplikationen) sehr effizient und möglicherweise parallel auf der Hardware ausgeführt werden können.

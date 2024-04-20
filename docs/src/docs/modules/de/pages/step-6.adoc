@@ -1,4 +1,4 @@
-= Step 5. get_batch()
+= Step 6. Batch & Block
 
 [source,python,linenums]
 ----

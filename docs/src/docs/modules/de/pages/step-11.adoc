@@ -1,0 +1,36 @@
+= Step 10. Transformers - Block
+
+
+[source,python,linenums]
+----
+include::example$gpt.py[lines=121..136]
+----
+
+[plantuml]
+----
+@startuml
+// Transformer Block
+digraph ee{
+	X [label="Input X"]
+	LN1 [label="LayerNorm (LN1)"];
+	MHA [label="MultiHeadAttention (MHA)"]
+	ADD1 [label="Addition (+) after MHA"]
+	LN2 [label="LayerNorm (LN2)"]
+	FF [label="FeedForward (FF)"]
+	ADD2 [label="Addition (+) after FF"]
+	Y [label="Output Y"]
+	X -> LN1
+	LN1 -> MHA
+	MHA -> ADD1
+	X -> ADD1
+	ADD1 -> LN2
+	LN2 -> FF
+	FF -> ADD2
+	ADD2 -> Y
+}
+@enduml
+----
+
+== Code erklären
+
+Der Transformer-Block, wie er hier definiert ist, kombiniert wichtige Prinzipien wie Multi-Head Attention, Feedforward-Netzwerke und Residual Connections mit Layer-Normalisierung, um die Lernfähigkeit in tiefen Netzwerkarchitekturen zu verbessern. Diese Struktur unterstützt effektiv das Lernen komplexer Abhängigkeiten in den Daten und ist besonders nützlich bei der Verarbeitung von Sequenzen, wo langreichweitige Abhängigkeiten von Bedeutung sind.
