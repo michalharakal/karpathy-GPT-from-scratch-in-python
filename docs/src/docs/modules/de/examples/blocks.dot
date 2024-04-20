@@ -1,0 +1,18 @@
+digraph {
+	X [label="Input X"]
+	LN1 [label="LayerNorm (LN1)"];
+	MHA [label="MultiHeadAttention (MHA)"]
+	ADD1 [label="Addition (+) after MHA"]
+	LN2 [label="LayerNorm (LN2)"]
+	FF [label="FeedForward (FF)"]
+	ADD2 [label="Addition (+) after FF"]
+	Y [label="Output Y"]
+	X -> LN1
+	LN1 -> MHA
+	MHA -> ADD1
+	X -> ADD1
+	ADD1 -> LN2
+	LN2 -> FF
+	FF -> ADD2
+	ADD2 -> Y
+}

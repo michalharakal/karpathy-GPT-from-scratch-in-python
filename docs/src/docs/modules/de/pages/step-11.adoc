@@ -1,4 +1,4 @@
-= Step 10. Transformers - Block
+= Step 11. Transformers - Block
 
 
 [source,python,linenums]
@@ -6,30 +6,8 @@
 include::example$gpt.py[lines=121..136]
 ----
 
-[plantuml]
-----
-@startuml
-// Transformer Block
-digraph ee{
-	X [label="Input X"]
-	LN1 [label="LayerNorm (LN1)"];
-	MHA [label="MultiHeadAttention (MHA)"]
-	ADD1 [label="Addition (+) after MHA"]
-	LN2 [label="LayerNorm (LN2)"]
-	FF [label="FeedForward (FF)"]
-	ADD2 [label="Addition (+) after FF"]
-	Y [label="Output Y"]
-	X -> LN1
-	LN1 -> MHA
-	MHA -> ADD1
-	X -> ADD1
-	ADD1 -> LN2
-	LN2 -> FF
-	FF -> ADD2
-	ADD2 -> Y
-}
-@enduml
-----
+.Block
+image:transformers-block.svg[]
 
 == Code erklären
 
